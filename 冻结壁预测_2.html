@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冻结壁预测_2</title>
+    <style>
+      /* 头部css */
+        header h1{
+          color: #333;
+          text-align: left;
+          background-color: #fff;
+          
+        }
+        nav {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        /* 主体css */
+        table {
+        border-collapse: collapse;
+        margin:  100px auto;
+        }
+
+        td {
+            text-align: center;
+        width: 90px;
+        height: 30px;
+        border: 2px solid black;
+        }
+        input {
+          width: 90px;
+        height: 30px;
+        border: 1px   black;
+        }
+        .btn {
+            width: 300px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        div{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 60px;
+          }
+        
+        
+    </style>
+</head>
+<body>
+  <header>
+    <h1>冻结壁预测平台</h1>
+    <nav>
+        <ul>
+          <li><a href="冻结壁预测_2.html">上传数据</a></li>
+          <li><a href="冻结壁预测_3.html">选择算法</a></li>
+          <li><a href="冻结壁预测_4.html">预测结果</a></li>
+          <li><a href="#">查看图像</a></li>
+        </ul>
+    </nav>
+</header>
+    <table>
+        <tbody>
+            <tr style="font-weight: 600;">
+                <td>**数据</td> <td>**数据</td><td>**数据</td><td>**数据</td>
+                <td>**数据</td> <td>**数据</td><td>**数据</td><td>**数据</td>
+                <td>**数据</td>
+              </tr>
+          <tr>
+            <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr>
+           <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr>
+           <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr>
+           <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr>
+           <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr>
+           <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr>
+           <td><input type="text"></td> <td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          </tr>
+        </tbody>
+    </table>
+    <form action="冻结壁预测_3.html">
+      <div>
+        <button class="btn" >确定</button>
+      </div>
+    </form>
+    <script>
+      document.querySelector('form').addEventListener('submit', function(e) {
+       // e.preventDefault(); // 阻止表单默认提交行为,防止刷新页面
+    
+        // 获取表单数据
+        var tableData = [];
+        var rows = document.querySelectorAll('table tr');//捕获行数
+        for (var i = 1; i < rows.length; i++)
+         {
+          var rowData = [];
+          var cells = rows[i].querySelectorAll('td input');//捕获列数
+            for (var j = 0; j < cells.length; j++) {
+                rowData.push(cells[j].value);
+            }
+          tableData.push(rowData);
+        }
+    
+        // 创建Excel文件
+        var csvContent = "data:text/csv;charset=utf-8,";//csv格式的文本字符串
+        tableData.forEach(function(rowArray) {
+          var row = rowArray.join(",");
+          csvContent += row + "\r\n";
+        });
+    
+        // 创建一个链接并下载Excel文件
+        var encodedUri = encodeURI(csvContent);//编码
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "冻结预测.csv");
+        link.click();
+    console.log(encodedUri);
+        // 传输给库函数
+        // 这一步需要根据具体的后端语言和库函数进行处理，将Excel文件上传到服务器并传输给库函数进行处理。
+      });
+          </script>
+</body>
+</html>
